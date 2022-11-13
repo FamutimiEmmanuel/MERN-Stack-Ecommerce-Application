@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 const Footer = () => {
   return (
-    <footer>
+    <footer style={{background:'black', color:'white'}}>
       <Container>
         <Row>
           <Col className='text-center py-3'>Copyright &copy; ProShop</Col>

@@ -42,8 +42,8 @@
       "last 1 safari version"
     ]
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "Gadgets place where you shop for your favourite gadgets",
   "main": "index.js",
-  "author": "",
+  "author": "Emmanuel Famutimi",
   "license": "ISC"
 }

@@ -1,6 +1,36 @@
 import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js'
+import {google} from 'googleapis'
+import nodemailer from 'nodemailer'
+
+
+
+// const OAuth2 = google.auth.OAuth2;
+
+// const myOAuth2Client = new OAuth2( process.env.CLIENT_ID, process.env.CLIENT_SECRET, 
+//   'https://developers.google.com/oauthplayground'
+// )
+
+// myOAuth2Client.setCredentials({
+//   refresh_token : process.env.REFRESH_TOKEN
+// })
+
+// const myAccessToken = myOAuth2Client.getAccessToken()
+
+// const transporter = nodemailer.createTransport({
+//   service:'gmail',
+//   auth: {
+//       type:'OAuth2',
+//       user:'olamide.famutimi@gmail.com',
+//       clientId:process.env.CLIENT_ID,
+//       clientSecret:process.env.CLIENT_SECRET,
+//       refreshToken:process.env.REFRESH_TOKEN,
+//       accessToken:myAccessToken
+//   }
+// });
+
+
 
 // @desc    Auth user & get token
 // @route   POST /api/users/login
@@ -18,6 +48,14 @@ const authUser = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
+
+    // transporter.sendMail({
+    //   from: "no-reply@gadgets place",
+    //   to: user.email,
+    //   subject:"login success",
+    //   text: 'Glad to have you here',
+    //   html: "<h1>Shop for your favourite gadgets here,we deliver the best nation wide</h1>"
+    //             })
   } else {
     res.status(401)
     throw new Error('Invalid email or password')
@@ -51,6 +89,14 @@ const registerUser = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
+
+    // transporter.sendMail({
+    //   from: "no-reply@gadgets place",
+    //   to: user.email,
+    //   subject:"Register success",
+    //   text: 'Glad to have you here',
+    //   html: "<h1>Shop for your favourite gadgets here,we deliver the best nation wide</h1>"
+    //             })
   } else {
     res.status(400)
     throw new Error('Invalid user data')
